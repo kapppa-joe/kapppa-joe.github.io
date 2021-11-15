@@ -1,3 +1,5 @@
+// Configurations
+
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap')
 @import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css')
@@ -5,6 +7,26 @@
 $background: #fafafa
 $foreground: #11191F
 
+$body-font: "Titillium Web", "Helvetica Neue", arial, sans-serif
+$code-font: "Source Code Pro", monospace
+
+@media (min-width: 576px)
+  :root
+    font-size: 17px
+
+@media (min-width: 768px)
+  :root
+    font-size: 18px
+
+@media (min-width: 992px)
+  :root
+    font-size: 19px
+
+@media (min-width: 1200px)
+  :root
+    font-size: 20px
+
+// global settings
 html,
 body
   height: 100%
@@ -12,9 +34,9 @@ body
   padding: 0
   margin: 0
   background: $background
-  font-family: "Titillium Web", "Helvetica Neue", arial, sans-serif
+  font-family: $body-font
   font-weight: 400
-  // font-size: calc(1em + 0.5vmin)
+  font-size: 1em
   color: $foreground
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
@@ -32,6 +54,8 @@ section
   min-height: 100vh
   border: 1px solid #444
 
+// Navbar
+
 #main-nav
   position: fixed
   top: 0
@@ -44,7 +68,7 @@ section
   justify-content: space-evenly
 
 .nav-button
-  font-family: "SourceCode Pro", monospace
+  font-family: $code-font
 
 .flex
   display: flex
@@ -53,5 +77,39 @@ section
   display: flex
   flex-direction: column
 
+// Intro
+
 section#intro
   padding-top: 3em
+  font-family: $code-font
+
+  display: flex
+  justify-content: center
+  align-items: center
+
+  animation: focus-in 2s ease-in forwards
+
+@keyframes focus-in
+  from
+    filter: blur(0.5rem) opacity(0)
+  to
+    filter: none
+
+section#intro .welcome-msg
+  font-size: 1.8rem
+  font-weight: 700
+  text-align: justify
+  position: relative
+  bottom: 2em
+  left: 3em
+
+// utilities
+
+@keyframes blink
+  from
+    opacity: 1
+  to
+    opacity: 0
+
+.typewriter-cursor
+  animation: blink 0.5s linear infinite alternate
