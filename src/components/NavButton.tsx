@@ -32,13 +32,13 @@ interface NavButtonContentProps {
 const NavButtonContent = ({isActive, str}: NavButtonContentProps) => {
   if (isActive) {
     return (
-      <span style={{display: "inline-block", minWidth: `${str.length * 9 + 36}px`}}>
+      <span className="nav-button-text" data-req-width={`${str.length * 10 + 42}px`}>
         <TypeWriter str={makeCodingStyleString(str)} />
       </span>
     );
   } else {
     return (
-      <span style={{display: "inline-block", minWidth: `${str.length * 9 + 36}px`}}>
+      <span className="nav-button-text" data-req-width={`${str.length * 10 + 42}px`}>
         {str}
       </span>)
   }
