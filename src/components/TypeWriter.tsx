@@ -9,24 +9,20 @@ interface props {
   delayTime?: number,
   play?: boolean,
   showCursor?: boolean
+  wrapInPTag?: boolean
 }
 
-const addLineBreak = (stringArr:string[]): (string|JSX.Element)[] => {
-  let result = [];
-  for (let i = 0; i < stringArr.length; i++) {
-    result.push(stringArr[i])
-    if (i !== stringArr.length - 1) {
-      result.push(<br />)
-    }
-  }
-  return result;
+const pTagMap = (stringArr:string[]): (JSX.Element)[] => {
+  return stringArr.map(str => {
+    return (<p>{str}</p>)
+  })
 }
 
 const TypeWriterCursor = () => {
   return (<span className="typewriter-cursor">|</span>)
 }
 
-const TypeWriter = ({ str = "", delayTime = 50, play = true, showCursor =  true }:props) => {
+const TypeWriter = ({ str = "", delayTime = 50, play = true, showCursor =  false, wrapInPTag = false }:props) => {
   const [text, setText] = useState<Array<string>>([]);
   const startTyping = async (ref:{isMounted: boolean}) => {
     for (let i = 0; i < str.length; i++) {
@@ -50,7 +46,7 @@ const TypeWriter = ({ str = "", delayTime = 50, play = true, showCursor =  true 
 
   return (
     <><span className="typewriter-text">
-      {text.length > 1 ? addLineBreak(text) : text}
+      {wrapInPTag ? pTagMap(text) : text}
     </span>{showCursor && <TypeWriterCursor />}</>
   );
 };

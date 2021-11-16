@@ -22,7 +22,9 @@ $xl: 1200px
   @media (min-width: $xl)
     font-size: 20px
 
+
 // Colour themes
+
 @mixin themeable($foreground, $background, $primary, $secondary)
   html,
   body
@@ -43,6 +45,7 @@ $xl: 1200px
   @include themeable($foreground: #fafafa, $background: #11191f, $primary: #cc3, $secondary: #3366cc)
 
 // Global settings
+
 
 html,
 body
@@ -135,10 +138,26 @@ section#intro
 section#intro .welcome-msg
   font-size: 1.8rem
   font-weight: 700
-  text-align: justify
+  text-align: left
   position: relative
-  bottom: 2em
-  left: 3em
+  bottom: 4em
+  text-indent: -1.4em
+  max-width: 70%
+
+section#intro .welcome-msg p
+  margin: 0
+  padding: 0
+
+section#intro .welcome-msg p::before
+  display: inline-block
+  content: "> "
+  width: 1.5em
+  text-indent: 0
+
+section#intro .welcome-msg p:last-child::after
+  display: inline
+  content: "|"
+  animation: blink 0.5s linear infinite alternate
 
 // utilities
 
