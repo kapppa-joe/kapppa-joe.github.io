@@ -7,7 +7,9 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "add": "^2.0.6",
     "preact": "^10.5.13",
+    "react-responsive-carousel": "^3.2.22",
     "sass": "^1.43.4",
     "scss": "^0.2.4"
   },

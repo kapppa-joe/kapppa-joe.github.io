@@ -65,6 +65,13 @@ $xl: 1200px
     background: $primary
     color: $background
 
+  #projects .slider-wrapper
+    background: rgba($foreground, 0.1)
+
+  .project-card
+    border: 0.5px solid $shadow
+    background: $background
+
   .project-title
     background: $primary
     color: $background
@@ -281,15 +288,14 @@ section#intro .welcome-msg p:last-child::after
 // Projects
 
 .project-card
-  padding: 1em
-  margin: 1em 0
+  padding: 1rem
+  margin: 1rem
 
   display: flex
   flex-direction: column
   align-items: stretch
   gap: 0.5rem
 
-  border: 1px solid #4040F0
 
 .project-title
   text-align: center
@@ -304,7 +310,6 @@ section#intro .welcome-msg p:last-child::after
 .project-techstack-tags span
   margin: 0.2rem
   padding: 0 0.2rem
-  background: #ccc
 
 
 .project-img
