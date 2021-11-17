@@ -1,5 +1,7 @@
 // Configurations
 
+@use 'assets/style/colour-themes'
+
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap')
 // @import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css')
@@ -22,76 +24,6 @@ $xl: 1200px
   @media (min-width: $xl)
     font-size: 20px
 
-
-// Colour themes
-
-@mixin themeable($foreground, $background, $primary, $secondary)
-  $light-shadow: mix($foreground, $background, 25%)
-  $shadow: mix($foreground, $background, 60%)
-  $container-background: rgba($foreground, 10%)
-  $content-foreground: mix($foreground, $background, 80%)
-
-  html &,
-  body &
-    background: $background
-    color: $foreground
-
-  a
-    color: $primary
-  a:hover, a:active
-    color: darken($primary, 20%)
-
-  p
-    color: $content-foreground
-
-  #main-nav
-    border-bottom: 1px solid $primary
-    background: $background
-
-  .section-title
-    color: $primary
-
-  .subtitle
-    background: $secondary
-
-  .welcome-msg p
-    color: $foreground
-
-  .empty-bar
-    background: $light-shadow
-    filter: drop-shadow(2px 2px 2px $shadow)
-
-  .filled-bar
-    background: $primary
-    color: $background
-
-  #projects .slider-wrapper
-    background: rgba($foreground, 0.1)
-
-  .project-card
-    border: 0.5px solid $shadow
-    background: $background
-
-  .project-title
-    background: $primary
-    color: $background
-
-  .theme-toggle-button
-    background: #777777
-
-  .project-techstack label
-    color: $primary
-
-  .project-techstack-tags
-    @for $i from 1 through 6
-      & span:nth-child(6n+#{$i})
-        background-color: rgba(saturate(adjust-hue($primary, calc(108deg * ($i - 2))), 0.5), 0.5)
-
-#app[data-theme="light"]
-  @include themeable($foreground: #11191f, $background: #fafafa, $primary: #36c, $secondary: #de3)
-
-#app[data-theme="dark"]
-  @include themeable($foreground: #fafafa, $background: #11191f, $primary: #de3, $secondary: #36c)
 
 // Global settings
 
@@ -311,8 +243,34 @@ section#intro .welcome-msg p:last-child::after
   margin: 0.2rem
   padding: 0 0.2rem
 
-
 .project-img
   width: 100%
   height: auto
   max-width: 95vw
+
+
+// carousel css override
+#projects .carousel
+  .arrow-button
+    position: absolute
+    top: 20%
+    height: 2.5em
+    width: 2.5em
+    border-radius: 50%
+    opacity: 0.8
+    display: inline-flex
+    justify-content: center
+    align-items: center
+    z-index: 2
+
+    border: 1px solid #00F
+    background: #fff6
+
+  .arrow-button-prev
+    left: 2em
+  .arrow-button-next
+    right: 2em
+    & .arrow
+      transform: rotate(180deg) translate(-100%, -100%)
+
+

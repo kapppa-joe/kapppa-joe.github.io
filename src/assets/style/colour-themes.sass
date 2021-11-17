@@ -1,0 +1,70 @@
+// Colour themes
+
+@mixin themeable($foreground, $background, $primary, $secondary)
+  $light-shadow: mix($foreground, $background, 25%)
+  $shadow: mix($foreground, $background, 60%)
+  $container-background: rgba($foreground, 10%)
+  $content-foreground: mix($foreground, $background, 80%)
+
+  html &,
+  body &
+    background: $background
+    color: $foreground
+
+  a
+    color: $primary
+  a:hover, a:active
+    color: darken($primary, 20%)
+
+  p
+    color: $content-foreground
+
+  #main-nav
+    border-bottom: 1px solid $primary
+    background: $background
+
+  .section-title
+    color: $primary
+
+  .subtitle
+    background: $secondary
+
+  .welcome-msg p
+    color: $foreground
+
+  .empty-bar
+    background: $light-shadow
+    filter: drop-shadow(2px 2px 2px $shadow)
+
+  .filled-bar
+    background: $primary
+    color: $background
+
+  .project-card
+    border: 0.5px solid $shadow
+    background: rgba(white, 0.1)
+
+  .project-title
+    background: $primary
+    color: $background
+
+  .theme-toggle-button
+    background: #777777
+
+  .project-techstack label
+    color: $primary
+
+  .project-techstack-tags
+    @for $i from 1 through 6
+      & span:nth-child(6n+#{$i})
+        background-color: rgba(saturate(adjust-hue($primary, calc(108deg * ($i - 2))), 0.5), 0.5)
+
+  // carousel css override
+  #projects .carousel
+    .arrow-button
+
+#app[data-theme="light"]
+  @include themeable($foreground: #11191f, $background: #fafafa, $primary: #36c, $secondary: #de3)
+
+#app[data-theme="dark"]
+  @include themeable($foreground: #fafafa, $background: #11191f, $primary: #de3, $secondary: #36c)
