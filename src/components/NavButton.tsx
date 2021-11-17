@@ -1,4 +1,5 @@
 import { useState } from "preact/hooks";
+import { HashLink } from "react-router-hash-link";
 import TypeWriter from "./TypeWriter";
 
 export interface NavButtonProps {
@@ -15,12 +16,21 @@ const makeCodingStyleString = (str: string): string => {
   }
 };
 
+const scrollWithOffset = (el: HTMLElement) => {
+  console.log(el, "<---- el");
+  const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+  const yOffset = -80;
+  window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+};
+
 const NavButton = ({ str, linkTo }: NavButtonProps) => {
   const [isActive, setIsActive] = useState(false);
 
   return (
-    <a
-      href={linkTo}
+    <HashLink
+      to={linkTo}
+      smooth
+      // scroll={(el) => scrollWithOffset(el)}
       className="nav-button"
       onFocus={() => setIsActive(true)}
       onMouseEnter={() => setIsActive(true)}
@@ -28,7 +38,7 @@ const NavButton = ({ str, linkTo }: NavButtonProps) => {
       onMouseLeave={() => setIsActive(false)}
     >
       <NavButtonContent str={str} isActive={isActive} />
-    </a>
+    </HashLink>
   );
 };
 
