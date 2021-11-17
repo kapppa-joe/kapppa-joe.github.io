@@ -150,7 +150,7 @@ section#intro .welcome-msg
   text-align: left
   position: relative
   bottom: 4rem
-  text-indent: -1.4em
+  text-indent: -1em
   max-width: 90%
   left: 1rem
   margin-right: 1rem
@@ -162,7 +162,7 @@ section#intro .welcome-msg p
 section#intro .welcome-msg p::before
   display: inline-block
   content: "> "
-  width: 1.5em
+  width: 1em
   text-indent: 0
 
 section#intro .welcome-msg p:last-child::after
@@ -191,10 +191,18 @@ section#intro .welcome-msg p:last-child::after
 // About me
 
 .about-me-contents
-  padding: 0 0.5rem
+  margin-top: 1rem
+  padding: 1rem
 
 .about-me-contents p
   margin: 1rem 0
+
+.about-me-contents p:first-child
+  margin-top: 0
+
+#about-me
+  // background: url("./assets/pic/bright_squares.png") repeat 0 0
+  background: url("./assets/pic/random_grey_variations.png") repeat 0 0
 
 // Skills
 .skills-chart
