@@ -14,7 +14,8 @@ const carouselSettings = {
 const tabletBreakpoint = 768;
 
 const arrowButton =
-  (direction: string) => (onClickHandler, hasPrevOrNext, label) => {
+  (direction: string) =>
+  (onClickHandler: () => void, hasPrevOrNext: boolean, label: string) => {
     return (
       <button
         className={`arrow-button arrow-button-${direction}`}
