@@ -2,7 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap')
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap')
-@import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css')
+// @import url('https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css')
 
 $body-font: "Titillium Web", "Helvetica Neue", arial, sans-serif
 $code-font: "Source Code Pro", monospace
@@ -26,26 +26,67 @@ $xl: 1200px
 // Colour themes
 
 @mixin themeable($foreground, $background, $primary, $secondary)
-  html,
-  body
+  $light-shadow: mix($foreground, $background, 25%)
+  $shadow: mix($foreground, $background, 60%)
+  $container-background: rgba($foreground, 10%)
+  $content-foreground: mix($foreground, $background, 80%)
+
+  html &,
+  body &
     background: $background
     color: $foreground
+
   a
     color: $primary
   a:hover, a:active
     color: darken($primary, 20%)
 
+  p
+    color: $content-foreground
+
   #main-nav
     border-bottom: 1px solid $primary
+    background: $background
 
-:root:not([data-theme="dark"]), [data-theme="light"]
-  @include themeable($foreground: #11191f, $background: #fafafa, $primary: #3366cc, $secondary: #cc3)
+  .section-title
+    color: $primary
 
-:root[data-theme="dark"]
-  @include themeable($foreground: #fafafa, $background: #11191f, $primary: #cc3, $secondary: #3366cc)
+  .subtitle
+    background: $secondary
+
+  .welcome-msg p
+    color: $foreground
+
+  .empty-bar
+    background: $light-shadow
+    filter: drop-shadow(2px 2px 2px $shadow)
+
+  .filled-bar
+    background: $primary
+    color: $background
+
+  .project-title
+    background: $primary
+    color: $background
+
+  .theme-toggle-button
+    background: #777777
+
+  .project-techstack label
+    color: $primary
+
+  .project-techstack-tags
+    @for $i from 1 through 6
+      & span:nth-child(6n+#{$i})
+        background-color: rgba(saturate(adjust-hue($primary, calc(108deg * ($i - 2))), 0.5), 0.5)
+
+#app[data-theme="light"]
+  @include themeable($foreground: #11191f, $background: #fafafa, $primary: #36c, $secondary: #de3)
+
+#app[data-theme="dark"]
+  @include themeable($foreground: #fafafa, $background: #11191f, $primary: #de3, $secondary: #36c)
 
 // Global settings
-
 
 html,
 body
@@ -56,6 +97,8 @@ body
   font-family: $body-font
   font-weight: 400
   font-size: 1em
+  line-height: 1.6
+  text-rendering: optimizeLegibility
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
@@ -64,16 +107,38 @@ body
 
 ul, li
   list-style: none
+  margin: 0
+  padding: 0
 
 a
   text-decoration: none
 
-#app
-  text-align: center
+h1,h2,h3,p,span,div
+  padding: 0
+  margin: 0
+
+h1,h2,h3
+  font-weight: 700
+
 
 section
   min-height: 100vh
   border: 1px solid #444
+  padding: 1rem
+
+.section-title
+  font-size: 2.5rem
+  padding: 0 0.5rem
+  font-weight: 700
+
+.subtitle
+  font-size: 1.4rem
+  padding: 0 0.5rem
+  // font-weight: 700
+
+.icon
+  height: 1em
+  width: 1em
 
 // Navbar
 
@@ -140,9 +205,11 @@ section#intro .welcome-msg
   font-weight: 700
   text-align: left
   position: relative
-  bottom: 4em
+  bottom: 4rem
   text-indent: -1.4em
-  max-width: 70%
+  max-width: 90%
+  left: 1rem
+  margin-right: 1rem
 
 section#intro .welcome-msg p
   margin: 0
@@ -169,3 +236,78 @@ section#intro .welcome-msg p:last-child::after
 
 .typewriter-cursor
   animation: blink 0.5s linear infinite alternate
+
+.theme-toggle-button
+  position: fixed
+  bottom: 2rem
+  right: 2rem
+  z-index: 99
+
+
+// About me
+
+.about-me-contents
+  padding: 0 0.5rem
+
+.about-me-contents p
+  margin: 1rem 0
+
+// Skills
+.skills-chart
+  display: block
+  margin-bottom: 2em
+
+.skillbar
+  margin: 0.5em
+
+.skillbar label
+  margin: 0 1em
+
+.empty-bar
+  display: inline-block
+  width: 100%
+  // background-color: #777
+  border-radius: 1em
+
+.filled-bar
+  display: inline-block
+  // background-color: #4040F0
+  border-radius: 1em 0 0 1em
+
+  & small
+    margin-left: 1em
+    white-space: nowrap
+
+// Projects
+
+.project-card
+  padding: 1em
+  margin: 1em 0
+
+  display: flex
+  flex-direction: column
+  align-items: stretch
+  gap: 0.5rem
+
+  border: 1px solid #4040F0
+
+.project-title
+  text-align: center
+  font-size: 1.5rem
+
+.project-techstack label
+  font-weight: 700
+
+.project-techstack-tags
+  display: inline-block
+
+.project-techstack-tags span
+  margin: 0.2rem
+  padding: 0 0.2rem
+  background: #ccc
+
+
+.project-img
+  width: 100%
+  height: auto
+  max-width: 95vw
