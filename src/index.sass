@@ -188,6 +188,27 @@ section#intro .welcome-msg p:last-child::after
   right: 2rem
   z-index: 99
 
+.tooltip
+  position: fixed
+  top: 50px
+  left: 0px
+  width: fit-content
+  padding: 0.5em
+  border-radius: 0.5em
+
+  text-align: center
+  white-space: nowrap
+  font-size: 0.5em
+  background: #0007
+  color: white
+  transform: translate(calc(-50% + 1em))
+  transform-origin: center
+  transition: all 0.1s linear 0s
+
+  &:hover, &:focus
+    filter: none
+
+
 
 // About me
 
@@ -303,4 +324,16 @@ section#contact
 
 .contact-body
   max-width: 70vw
-  margin: 1em auto
+  margin: 1rem auto
+
+.contact-icons
+  display: flex
+  font-size: 1.5rem
+  gap: 1.5rem
+  margin-top: 1.5rem
+  transition: 0.5s ease-in
+
+.contact-icons .icon
+  &:hover, &:focus
+    transform: scale(1.2)
+

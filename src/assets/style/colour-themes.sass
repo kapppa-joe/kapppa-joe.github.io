@@ -1,5 +1,13 @@
 // Colour themes
 
+@mixin contact-icons($fg, $bg, $pri)
+  & .contact-icons a
+    color: $fg
+    transition: 0.3s ease-in
+    &:hover, &:focus
+      filter: drop-shadow(0 0 3px rgba($pri, 0.5))
+      color: $pri
+
 @mixin themeable($foreground, $background, $primary, $secondary)
   $light-shadow: mix($foreground, $background, 25%)
   $light-grey: #a5acb2
@@ -77,6 +85,13 @@
     @for $i from 1 through 6
       & span:nth-child(6n+#{$i})
         background-color: rgba(saturate(adjust-hue($primary, calc(108deg * ($i - 2))), 0.5), 0.5)
+
+  section#contact
+    background: $foreground
+    color: $background
+    @include contact-icons($fg: $background, $bg: $foreground, $pri: $secondary)
+    & .section-title
+      color: $secondary
 
   // carousel css override
   #projects .carousel

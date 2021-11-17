@@ -13,8 +13,8 @@ export function App() {
   const toggleTheme = () => setIsDarkMode((curr) => !curr);
 
   return (
-    <div id="app" data-theme={isDarkMode ? "dark" : "light"}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <div id="app" data-theme={isDarkMode ? "dark" : "light"}>
         <ThemeToggleButton isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
         <NavBar />
         <div id="sections-wrapper">
@@ -24,7 +24,7 @@ export function App() {
           <Projects />
           <Contact />
         </div>
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
