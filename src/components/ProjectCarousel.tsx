@@ -42,6 +42,7 @@ const ProjectCarousel = () => {
       selectedItem={1}
       renderArrowPrev={arrowButton("prev")}
       renderArrowNext={arrowButton("next")}
+      showThumbs={false}
     >
       {ProjectData.map((project) => (
         <ProjectCard {...project} />

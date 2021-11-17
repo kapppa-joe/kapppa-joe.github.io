@@ -4,9 +4,9 @@ import { codingSkills, otherSkills } from "../data/SkillData";
 const Skills = () => {
   return (
     <section id="skills">
-      <h2 className="section-title">Skills</h2>
-      <SkillChart data={codingSkills} subHeading='Coding' />
-      <SkillChart data={otherSkills} subHeading='Other Skills' />
+      <h3 className="subtitle">Skills</h3>
+      <SkillChart data={codingSkills} subHeading="Coding" />
+      <SkillChart data={otherSkills} subHeading="Other Skills" />
     </section>
   );
 };
