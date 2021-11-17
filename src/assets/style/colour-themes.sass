@@ -21,8 +21,14 @@
     color: $content-foreground
 
   #main-nav
-    border-bottom: 1px solid $primary
+    border-bottom: 0.5px solid $primary
     background: $background
+
+  .nav-button
+    &:focus, &:hover
+      background-color: rgba($primary, 0.3)
+      border-bottom: 2px solid $primary
+
 
   .section-title
     color: $primary
@@ -36,6 +42,7 @@
 
   .about-me-contents
     background: rgba($background, 0.4)
+    border: 0.5px solid $light-shadow
 
   .skills-chart-subheading
     color: $primary
