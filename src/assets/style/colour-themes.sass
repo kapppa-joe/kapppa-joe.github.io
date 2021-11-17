@@ -2,6 +2,7 @@
 
 @mixin themeable($foreground, $background, $primary, $secondary)
   $light-shadow: mix($foreground, $background, 25%)
+  $light-grey: #a5acb2
   $shadow: mix($foreground, $background, 60%)
   $container-background: rgba($foreground, 10%)
   $content-foreground: mix($foreground, $background, 80%)
@@ -28,13 +29,14 @@
 
   .subtitle
     background: $secondary
+    color: $foreground
 
   .welcome-msg p
     color: $foreground
 
   .empty-bar
     background: $light-shadow
-    filter: drop-shadow(2px 2px 2px $shadow)
+    // filter: drop-shadow(2px 2px 2px $shadow)
 
   .filled-bar
     background: $primary
@@ -61,7 +63,22 @@
 
   // carousel css override
   #projects .carousel
+    .control-dots .dot
+      background: $primary
+      box-shadow: none
+    .carousel-status
+      text-shadow: 1px 1px 1px $light-shadow
     .arrow-button
+      fill: $primary
+      border: 0.5px $light-shadow solid
+      background: rgba($background, 0.5)
+      transition: 0.5s ease
+      &:hover, &:focus
+        opacity: 0.9
+        background: rgba($primary, 0.3)
+        border: 2px
+        box-shadow: 0 0 3px 5px $primary
+
 
 #app[data-theme="light"]
   @include themeable($foreground: #11191f, $background: #fafafa, $primary: #36c, $secondary: #de3)
