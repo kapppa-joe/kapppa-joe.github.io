@@ -16,26 +16,21 @@ const makeCodingStyleString = (str: string): string => {
   }
 };
 
-const scrollWithOffset = (el: HTMLElement) => {
-  console.log(el, "<---- el");
-  const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
-  const yOffset = -80;
-  window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
-};
-
 const NavButton = ({ str, linkTo }: NavButtonProps) => {
-  const [isActive, setIsActive] = useState(false);
+  const [isFocus, setIsFocus] = useState(false);
+  const [isHover, setIsHover] = useState(false);
+
+  const isActive = isFocus || isHover;
 
   return (
     <HashLink
       to={linkTo}
       smooth
-      // scroll={(el) => scrollWithOffset(el)}
       className="nav-button"
-      onFocus={() => setIsActive(true)}
-      onMouseEnter={() => setIsActive(true)}
-      onBlur={() => setIsActive(false)}
-      onMouseLeave={() => setIsActive(false)}
+      onFocus={() => setIsFocus(true)}
+      onMouseEnter={() => setIsHover(true)}
+      onBlur={() => setIsFocus(false)}
+      onMouseLeave={() => setIsHover(false)}
     >
       <NavButtonContent str={str} isActive={isActive} />
     </HashLink>

@@ -3,7 +3,7 @@ import ProjectData from "../data/ProjectData";
 import "preact/compat";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel/lib/js";
-import useWindowDimensions from "../hooks/useWindowDimensions";
+import useWindowDimensions from "../utils/useWindowDimensions";
 
 const carouselSettings = {
   centerMode: true,
