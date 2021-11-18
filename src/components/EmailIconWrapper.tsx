@@ -1,12 +1,18 @@
 import { useEffect, useState, useRef } from "preact/hooks";
 import Tooltip from "./Tooltip";
 
-const EmailIconWrapper = ({ email = "", children }) => {
+const EmailIconWrapper = ({
+  email = "",
+  children,
+}: {
+  email: string;
+  children: React.ReactNode;
+}) => {
   const initMsg = "click to copy the email address";
   const doneCopyMsg = "copyed! 🙂";
   const [isActive, setIsActive] = useState(false);
   const [hasCopied, setHasCopied] = useState(false);
-  const [pos, setPos] = useState(null);
+  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
   const tooltipParentRef = useRef<HTMLAnchorElement>(null);
 
   const handleClick = (e: Event) => {

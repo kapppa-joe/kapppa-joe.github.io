@@ -3,7 +3,7 @@ import { useLayoutEffect } from "preact/hooks"
 const getScrollPosition = () => {
   try {
     return { x: window.scrollX, y: window.scrollY }
-  } catch (err) {
+  } catch (err:any) {
     console.error('getScrollPosition err:', err.message)
     return { x: 0, y: 0 }
   }
@@ -13,7 +13,7 @@ const getScrollPosition = () => {
 let hasScrollListener = false
 
 
-const useScrollPosition = (effect, dependencies, wait: number) => {
+const useScrollPosition = (effect: (args: any) => void, dependencies: Array<any>, wait: number) => {
   let waitTimeout: null | number = null;
   let prevPosition = { x: 0, y: 0 }
 
@@ -38,7 +38,7 @@ const useScrollPosition = (effect, dependencies, wait: number) => {
     try { 
       mainEl && mainEl.addEventListener('scroll', handleScroll)
       hasScrollListener = true
-    } catch (err) {
+    } catch (err:any) {
       console.error('useScrollPosition err:', err.message)
     }
 

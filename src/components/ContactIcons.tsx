@@ -17,7 +17,15 @@ const iconData: iconDataType[] = [
   { slug: "twitter", url: "https://twitter.com/kapppa_joe" },
 ];
 
-const IconLinkWrapper = ({ url = "", email = "", children }) => {
+const IconLinkWrapper = ({
+  url = "",
+  email = "",
+  children,
+}: {
+  url?: string;
+  email?: string;
+  children: React.ReactNode;
+}) => {
   if (url) {
     return (
       <a href={url} target="_blank">

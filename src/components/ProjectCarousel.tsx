@@ -1,3 +1,5 @@
+// @ts-nocheck
+// tsc error involves type issues from 3rd party library. ignore here.
 import ProjectCard from "../components/ProjectCard";
 import ProjectData from "../data/ProjectData";
 import "preact/compat";
