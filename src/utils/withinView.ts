@@ -1,7 +1,6 @@
 const withinView = (selector: string) : boolean => {
   const el = document.querySelector(selector)
   if (!el) {
-    // console.log('cannot find element')
     return false
   }
   const rect = el.getBoundingClientRect()
