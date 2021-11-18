@@ -126,6 +126,20 @@ section
   height: calc(100vh - 3em)
   overflow-y: scroll
 
+
+.container
+  margin-left: auto
+  margin-right: auto
+  @media screen and (min-width: $sm)
+    max-width: calc($sm - 2em)
+  @media screen and (min-width: $md)
+    max-width: calc($md - 4em)
+  @media screen and (min-width: $lg)
+    max-width: calc($lg - 6em)
+  @media screen and (min-width: $xl)
+    max-width: calc($xl - 8em)
+
+
 // Intro
 
 section#intro
@@ -229,15 +243,28 @@ section#intro .welcome-msg p:last-child::after
 // Skills
 .skills-chart
   display: block
-  margin-bottom: 2em
+  margin: 1rem 0
+  padding: 1rem
 
 .skills-chart-subheading
   font-size: 1.4em
+  margin-top: 0
   margin-bottom: 0
   margin-left: 0.5rem
 
+.skillbar-wrapper
+  display: block
+  @media screen and (min-width: $lg)
+    display: grid
+    grid-template-columns: 1fr 1fr
+    column-gap: 2em
+
 .skillbar
   margin: 0.5em
+  @media screen and (min-width: $md)
+    display: grid
+    grid-template-columns: 1.5em 7em auto
+    align-items: center
 
 .skillbar label
   margin: 0 1em
@@ -254,6 +281,8 @@ section#intro .welcome-msg p:last-child::after
   & small
     margin-left: 1em
     white-space: nowrap
+
+
 
 // Projects
 
@@ -316,6 +345,10 @@ section#intro .welcome-msg p:last-child::after
     height: 1.8em
     top: 0
 
+  .slide
+    transition: filter 0.3s ease-out
+  .slide:not(.selected)
+    filter: blur(1px) opacity(0.5) brightness(0.8)
 
 // Contact
 

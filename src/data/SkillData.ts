@@ -8,8 +8,8 @@ export type SkillDataType = {
 export const codingSkills: SkillDataType[] = [
   {name: 'Javascript', slug: 'javascript', value: 0.8, description: "Pretty good at this"}
   ,{name: 'Python', slug: 'python', value: 0.55, description: "Intermediate"}
-  ,{name: 'HTML/CSS', slug: 'code', value: 0.55, description: "Intermediate"}
   ,{name: 'React', slug: 'react', value: 0.3, description: "Beginner"}
+  ,{name: 'HTML/CSS', slug: 'code', value: 0.55, description: "Intermediate"}
   ,{name: 'Ruby', slug: 'ruby', value: 0.3, description: "Beginner"}
   ,{name: 'Nim', slug: 'nim', value: 0.55, description: "Some experiences"}
   ,{name: 'VBA (Excel)', slug: 'code', value: 0.55, description: "Some experiences"}

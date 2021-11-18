@@ -50,16 +50,20 @@
 
   .about-me-contents
     background: rgba($background, 0.4)
-    border: 0.5px solid $light-shadow
+    border: 0.5px solid $shadow
 
   .skills-chart-subheading
     color: $primary
+
+  .skills-chart
+    background: rgba($background, 0.4)
+    border: 0.5px solid $shadow
 
   .skillbar svg
     color: $foreground
 
   .empty-bar
-    background: $light-shadow
+    background: rgba($light-grey, 0.7)
     // filter: drop-shadow(2px 2px 2px $shadow)
 
   .filled-bar
@@ -67,9 +71,8 @@
     color: $background
 
   .project-card
+    background: rgba($background, 0.8)
     border: 0.5px solid $shadow
-    // background: rgba(white, 0.1)
-    background: rgba($background, 0.4)
 
   .project-title
     background: $primary
@@ -115,11 +118,11 @@
 #app[data-theme="light"]
   @include themeable($foreground: #11191f, $background: #fafafa, $primary: #36c, $secondary: #dd3)
   --nimlang-logo-color: #11191f
-  section#about-me, section#projects
+  section#about-me, section#skills, section#projects
     background: url("./assets/pic/bright_squares.png") repeat 0 0
 
 #app[data-theme="dark"]
   @include themeable($foreground: #fafafa, $background: #11191f, $primary: #dd3, $secondary: #36c)
   --nimlang-logo-color: #ffe953
-  section#about-me, section#projects
+  section#about-me, section#skills, section#projects
     background: url("./assets/pic/random_grey_variations.png") repeat 0 0

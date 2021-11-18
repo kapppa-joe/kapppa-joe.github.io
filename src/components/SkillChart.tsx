@@ -11,7 +11,9 @@ const SkillChart = ({
   return (
     <div className="skills-chart">
       <h4 className="skills-chart-subheading">{subHeading}</h4>
-      {data.map((skill) => SkillBar(skill))}
+      <div className="skillbar-wrapper">
+        {data.map((skill) => SkillBar(skill))}
+      </div>
     </div>
   );
 };
