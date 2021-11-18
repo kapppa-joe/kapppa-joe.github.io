@@ -1,44 +1,50 @@
 import { useState } from "preact/compat";
+import useWindowDimensions from "../utils/useWindowDimensions";
 import { ProjectDataFormat } from "../data/ProjectData";
 
 const ProjectCard = (project: ProjectDataFormat) => {
   return (
     <article className="project-card">
-      <h3 className="project-title">{project.title}</h3>
-      <div className="project-description">
-        {project.description.split("\n").map((str) => (
-          <p>{str}</p>
-        ))}
-      </div>
-      <div className="project-techstack">
-        <label>Tech Stack:</label>
-        <div className="project-techstack-tags">
-          {project.techStack.map((tech) => (
-            <>
-              <span>{tech}</span>
-            </>
+      <div className="project-text-wrapper">
+        <h3 className="project-title">{project.title}</h3>
+        <div className="project-description">
+          {project.description.split("\n").map((str) => (
+            <p>{str}</p>
           ))}
         </div>
-      </div>
-      <div className="link-wrapper">
-        <a className="button" href={project.hostedUrl} target="_blank">
-          Demo
-        </a>
-        <a className="button" href={project.repoUrl} target="_blank">
-          Github Repo
-        </a>
+        <div className="project-techstack">
+          <label>Tech Stack:</label>
+          <div className="project-techstack-tags">
+            {project.techStack.map((tech) => (
+              <>
+                <span>{tech}</span>
+              </>
+            ))}
+          </div>
+        </div>
+        <div className="link-wrapper">
+          <a className="button" href={project.hostedUrl} target="_blank">
+            Demo
+          </a>
+          <a className="button" href={project.repoUrl} target="_blank">
+            Github Repo
+          </a>
+        </div>
       </div>
       <ProjectImage {...project} />
     </article>
   );
 };
 
-const Image = ({ url, title }) => {
+const Image = ({ url, title }: { url: string; title: string }) => {
   return <img className="project-img" src={url} alt={title} />;
 };
 
+const largeScreenBreakpoint = 992;
+
 const ProjectImage = (project: ProjectDataFormat) => {
-  if (!project.demoImgUrl) {
+  const { width } = useWindowDimensions();
+  if (!project.demoImgUrl || width <= largeScreenBreakpoint) {
     return (
       <div className="project-img-wrapper">
         <a href={project.hostedUrl} target="_blank">
