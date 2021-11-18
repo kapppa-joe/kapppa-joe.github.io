@@ -46,6 +46,8 @@ const EmailIconWrapper = ({ email = "", children }) => {
     });
   };
 
+  useEffect(() => {});
+
   useEffect(() => {
     if (hasCopied) {
       setTimeout(() => {

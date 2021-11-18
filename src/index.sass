@@ -80,11 +80,14 @@ section
 // Navbar
 
 #main-nav
-  // position: absolute
   top: 0
   height: 3em
   width: 100vw
+  display: flex
+  flex-direction: row
   z-index: 10
+  @media screen and (min-width: $lg)
+    padding: 0 1em
 
 #nav-menu
   display: flex
@@ -113,12 +116,14 @@ section
   @media screen and (min-width: $md)
     min-width: 5em
 
-.flex
-  display: flex
-
-.flex-column
-  display: flex
-  flex-direction: column
+#nav-contact-icons
+  display: none
+  position: relative
+  @media screen and (min-width: $lg)
+    display: inline-flex
+    align-items: center
+  & .contact-icons
+    font-size: 1.2rem
 
 // Sections
 
@@ -418,16 +423,16 @@ a.button
 
 section#contact
   min-height: 40vh
-
-.contact-body
-  max-width: 70vw
-  margin: 1rem auto
+  .contact-body
+    max-width: 70vw
+    margin: 1rem auto
+  .contact-icons
+    margin-top: 1.5rem
 
 .contact-icons
   display: flex
   font-size: 1.5rem
   gap: 1.5rem
-  margin-top: 1.5rem
   transition: 0.5s ease-in
 
 .contact-icons .icon

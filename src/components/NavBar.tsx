@@ -1,6 +1,7 @@
 import { default as NavButton, NavButtonProps } from "./NavButton";
 import withinView from "../utils/withinView";
 import useScrollPosition from "../utils/useScrollPosition";
+import ContactIcons from "./ContactIcons";
 
 const sections: NavButtonProps[] = [
   { str: "Home", linkTo: "#intro" },
@@ -25,6 +26,9 @@ const NavBar = () => {
           <li className="nav-item">{NavButton(navButtonProps)}</li>
         ))}
       </ul>
+      <span id="nav-contact-icons">
+        <ContactIcons />
+      </span>
     </nav>
   );
 };
