@@ -81,6 +81,16 @@
       & span:nth-child(6n+#{$i})
         background-color: rgba(saturate(adjust-hue($primary, calc(108deg * ($i - 2))), 0.5), 0.5)
 
+  a.button
+    color: $background
+    background: $primary
+    box-shadow: 1px 1px 3px $shadow
+    transition: 0.2s ease-in
+    &:focus, &:hover
+      filter: brightness(1.2)
+      box-shadow: 1px 1px 3px $primary
+
+
   section#contact
     background: $foreground
     color: $background

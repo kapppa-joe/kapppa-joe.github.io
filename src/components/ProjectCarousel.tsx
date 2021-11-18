@@ -5,12 +5,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel/lib/js";
 import useWindowDimensions from "../utils/useWindowDimensions";
 
-const carouselSettings = {
-  centerMode: true,
-  centerSlidePercentage: "70%",
-  infiniteLoop: true,
-};
-
 const tabletBreakpoint = 768;
 
 const arrowButton =
@@ -40,7 +34,7 @@ const ProjectCarousel = () => {
       infiniteLoop={true}
       centerMode={width > tabletBreakpoint}
       centerSlidePercentage="70"
-      selectedItem={1}
+      selectedItem={0}
       renderArrowPrev={arrowButton("prev")}
       renderArrowNext={arrowButton("next")}
       showThumbs={false}
