@@ -71,7 +71,11 @@
     color: $background
 
   .theme-toggle-button
-    background: #777777
+    background: transparent
+    & .theme-button-icon
+      background: $foreground
+      color: $background
+      box-shadow: 0 0 10px 0px $foreground
 
   .project-techstack label
     color: $primary
