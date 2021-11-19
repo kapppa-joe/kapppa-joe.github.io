@@ -7,8 +7,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import useGuessDevice from "../utils/useGuessDevice";
 
-const tabletBreakpoint = 768;
-
 const arrowButton =
   (direction: string) =>
   (onClickHandler: () => void, hasPrevOrNext: boolean, label: string) => {
