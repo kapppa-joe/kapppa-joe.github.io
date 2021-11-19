@@ -380,6 +380,7 @@ a.button
   width: fit-content
 
 .project-img-wrapper
+  position: relative
   order: -1
   & a
     display: block
@@ -389,7 +390,13 @@ a.button
   @media screen and (min-width: $lg)
     order: 1
 
-
+.project-swipe-helper
+  position: absolute
+  background: transparent
+  height: 100%
+  width: 50%
+  transform: translateX(50%)
+  z-index: 10
 
 // carousel css override
 #projects .carousel

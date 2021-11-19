@@ -48,15 +48,25 @@ const Image = ({
   return <img className={`project-img ${className}`} src={url} alt={title} />;
 };
 
-const largeScreenBreakpoint = 992;
+const SwipeHelper = () => {
+  return (
+    <div
+      className="project-swipe-helper"
+      onTouchStart={(e) => {
+        e.stopPropagation();
+      }}
+    ></div>
+  );
+};
 
 const ProjectImage = (project: ProjectDataFormat) => {
-  const { isLargeScreen } = useGuessDevice();
+  const { isLargeScreen, isTouchDevice } = useGuessDevice();
   if (project.demoImgUrl && isLargeScreen) {
     return <ProjectImageWithDemo {...project} />;
   } else {
     return (
       <div className="project-img-wrapper">
+        {isTouchDevice && <SwipeHelper />}
         <a href={project.hostedUrl} target="_blank">
           <Image url={project.imgUrl} title={project.title} />
         </a>
