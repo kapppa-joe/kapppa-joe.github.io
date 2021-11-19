@@ -1,6 +1,4 @@
 import { default as NavButton, NavButtonProps } from "./NavButton";
-import withinView from "../utils/withinView";
-import useScrollPosition from "../utils/useScrollPosition";
 import ContactIcons from "./ContactIcons";
 
 const sections: NavButtonProps[] = [
@@ -11,14 +9,6 @@ const sections: NavButtonProps[] = [
 ];
 
 const NavBar = () => {
-  useScrollPosition(
-    () => {
-      console.log(withinView("#about-me"), "<-- about me in view");
-    },
-    [],
-    500
-  );
-
   return (
     <nav id="main-nav" role="navigation">
       <ul id="nav-menu">
