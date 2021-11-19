@@ -1,6 +1,7 @@
 import { useState } from "preact/hooks";
 import { HashLink } from "react-router-hash-link";
 import TypeWriter from "./TypeWriter";
+import useGuessDevice from "../utils/useGuessDevice";
 
 export interface NavButtonProps {
   str: string;
@@ -19,8 +20,17 @@ const makeCodingStyleString = (str: string): string => {
 const NavButton = ({ str, linkTo }: NavButtonProps) => {
   const [isFocus, setIsFocus] = useState(false);
   const [isHover, setIsHover] = useState(false);
+  const { isTouchDevice } = useGuessDevice();
 
   const isActive = isFocus || isHover;
+
+  if (isTouchDevice) {
+    return (
+      <HashLink to={linkTo} smooth className="nav-button">
+        <span className="nav-button-text">{str}</span>
+      </HashLink>
+    );
+  }
 
   return (
     <HashLink
