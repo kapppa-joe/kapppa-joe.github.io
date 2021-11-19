@@ -9,7 +9,7 @@ import Contact from "./sections/Contact";
 import ThemeToggleButton from "./components/ThemeToggleButton";
 
 export function App() {
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const toggleTheme = () => setIsDarkMode((curr) => !curr);
 
   return (
