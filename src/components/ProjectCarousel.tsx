@@ -5,7 +5,7 @@ import ProjectData from "../data/ProjectData";
 import "preact/compat";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import useWindowDimensions from "../utils/useWindowDimensions";
+import useGuessDevice from "../utils/useGuessDevice";
 
 const tabletBreakpoint = 768;
 
@@ -29,12 +29,12 @@ const arrowButton =
   };
 
 const ProjectCarousel = () => {
-  const { width } = useWindowDimensions();
+  const { isTouchDevice } = useGuessDevice();
 
   return (
     <Carousel
       infiniteLoop={true}
-      centerMode={width > tabletBreakpoint}
+      centerMode={!isTouchDevice}
       centerSlidePercentage={70}
       selectedItem={0}
       renderArrowPrev={arrowButton("prev")}

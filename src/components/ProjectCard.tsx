@@ -1,5 +1,5 @@
 import { useState } from "preact/compat";
-import useWindowDimensions from "../utils/useWindowDimensions";
+import useGuessDevice from "../utils/useGuessDevice";
 import { ProjectDataFormat } from "../data/ProjectData";
 
 const ProjectCard = (project: ProjectDataFormat) => {
@@ -51,8 +51,10 @@ const Image = ({
 const largeScreenBreakpoint = 992;
 
 const ProjectImage = (project: ProjectDataFormat) => {
-  const { width } = useWindowDimensions();
-  if (!project.demoImgUrl || width <= largeScreenBreakpoint) {
+  const { isLargeScreen } = useGuessDevice();
+  if (project.demoImgUrl && isLargeScreen) {
+    return <ProjectImageWithDemo {...project} />;
+  } else {
     return (
       <div className="project-img-wrapper">
         <a href={project.hostedUrl} target="_blank">
@@ -60,8 +62,6 @@ const ProjectImage = (project: ProjectDataFormat) => {
         </a>
       </div>
     );
-  } else {
-    return <ProjectImageWithDemo {...project} />;
   }
 };
 

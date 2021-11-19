@@ -7,8 +7,8 @@ const useGuessDevice = () => {
   const { width } = useWindowDimensions();
   const isTouchDevice = width <= breakpoints.md;
   const isMobile = width <= breakpoints.sm;
-  const isDesktop = width > breakpoints.md;
-  return { isTouchDevice, isMobile, isDesktop };
+  const isLargeScreen = width > breakpoints.lg;
+  return { isTouchDevice, isMobile, isLargeScreen };
 };
 
 export default useGuessDevice;
