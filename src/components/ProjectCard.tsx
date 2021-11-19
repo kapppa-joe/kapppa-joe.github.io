@@ -36,8 +36,16 @@ const ProjectCard = (project: ProjectDataFormat) => {
   );
 };
 
-const Image = ({ url, title }: { url: string; title: string }) => {
-  return <img className="project-img" src={url} alt={title} />;
+const Image = ({
+  url,
+  title,
+  className = "",
+}: {
+  url: string;
+  title: string;
+  className?: string;
+}) => {
+  return <img className={`project-img ${className}`} src={url} alt={title} />;
 };
 
 const largeScreenBreakpoint = 992;
@@ -53,24 +61,37 @@ const ProjectImage = (project: ProjectDataFormat) => {
       </div>
     );
   } else {
-    const [isHover, setIsHover] = useState(false);
-    return (
-      <div
-        className="project-img-wrapper"
-        onMouseEnter={() => setIsHover(true)}
-        onMouseLeave={() => setIsHover(false)}
-      >
-        <small>⬇ Try hover on the image! </small>
-        <a href={project.hostedUrl} target="_blank">
-          {isHover ? (
-            <Image url={project.demoImgUrl} title={project.title} />
-          ) : (
-            <Image url={project.imgUrl} title={project.title} />
-          )}
-        </a>
-      </div>
-    );
+    return <ProjectImageWithDemo {...project} />;
   }
+};
+
+const ProjectImageWithDemo = (project: ProjectDataFormat) => {
+  const [isHover, setIsHover] = useState(false);
+  const [demoImgLoaded, setDemoImgLoaded] = useState(false);
+  const showDemo = isHover && demoImgLoaded;
+
+  return (
+    <div
+      className="project-img-wrapper"
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+    >
+      {demoImgLoaded && <small>⬇ Try hover on the image! </small>}
+      <a href={project.hostedUrl} target="_blank">
+        <img
+          className={`project-img ${showDemo || "hidden"}`}
+          src={project.demoImgUrl}
+          alt={project.title}
+          onLoad={() => setDemoImgLoaded(true)}
+        />
+        <Image
+          url={project.imgUrl}
+          title={project.title}
+          className={showDemo ? "hidden" : ""}
+        />
+      </a>
+    </div>
+  );
 };
 
 export default ProjectCard;
