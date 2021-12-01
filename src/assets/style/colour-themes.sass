@@ -2,8 +2,8 @@
 
 @mixin contact-icons($fg, $bg, $pri)
   & .contact-icons a
+    // filter: drop-shadow(0 0 3px rgba($pri, 0.5))
     color: $fg
-    transition: 0.3s ease-in
     &:hover, &:focus
       filter: drop-shadow(0 0 3px rgba($pri, 0.5))
       color: $pri
