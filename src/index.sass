@@ -189,6 +189,28 @@ section#intro .welcome-msg p:last-child::after
   content: "|"
   animation: blink 0.5s linear infinite alternate
 
+
+section#intro .welcome-msg .emoji
+  display: inline-block
+  margin-left: 0.5em
+  padding-left: 0.5em
+  transform-origin: left
+  animation: rotate-emoji 0.3s 0.4s forwards paused
+
+
+section#intro .welcome-msg .finished-typing .emoji
+  animation-play-state: running
+
+@keyframes rotate-emoji
+  0%
+    transform: none
+  50%
+    transform: rotate(90deg)
+  75%
+    transform: rotate(90deg) scale(1.3)
+  100%
+    transform: rotate(90deg) scale(1)
+
 // utilities
 
 @keyframes blink

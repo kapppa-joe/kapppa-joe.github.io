@@ -5,26 +5,29 @@ const delay = (time: number) => {
 };
 
 interface props {
-  str: string
-  delayTime?: number,
-  play?: boolean,
-  showCursor?: boolean
-  wrapInPTag?: boolean
-}
-
-const pTagMap = (stringArr:string[]): (JSX.Element)[] => {
-  return stringArr.map(str => {
-    return (<p>{str}</p>)
-  })
+  str: string;
+  delayTime?: number;
+  play?: boolean;
+  showCursor?: boolean;
+  wrapInPTag?: boolean;
+  displayFunc?: Function | null;
 }
 
 const TypeWriterCursor = () => {
-  return (<span className="typewriter-cursor">|</span>)
-}
+  return <span className="typewriter-cursor">|</span>;
+};
 
-const TypeWriter = ({ str = "", delayTime = 50, play = true, showCursor =  false, wrapInPTag = false }:props) => {
+const TypeWriter = ({
+  str = "",
+  delayTime = 50,
+  play = true,
+  showCursor = false,
+  displayFunc = null,
+}: props) => {
   const [text, setText] = useState<Array<string>>([]);
-  const startTyping = async (ref:{isMounted: boolean}) => {
+  const [finishedTyping, setFinishedTyping] = useState(false);
+  const startTyping = async (ref: { isMounted: boolean }) => {
+    setFinishedTyping(false);
     for (let i = 0; i < str.length; i++) {
       let nextText = str.slice(0, i + 1).split("\n");
       await delay(delayTime);
@@ -32,22 +35,30 @@ const TypeWriter = ({ str = "", delayTime = 50, play = true, showCursor =  false
         setText(nextText);
       }
     }
+    setFinishedTyping(true);
   };
 
   useEffect(() => {
-    const ref = {isMounted: true}
+    const ref = { isMounted: true };
     if (play) {
       startTyping(ref);
     }
     return () => {
       ref.isMounted = false;
-    }
+    };
   }, [play]);
 
   return (
-    <><span className="typewriter-text">
-      {wrapInPTag ? pTagMap(text) : text}
-    </span>{showCursor && <TypeWriterCursor />}</>
+    <>
+      <span
+        className={`typewriter-text ${
+          finishedTyping ? "finished-typing" : "typing"
+        }`}
+      >
+        {displayFunc ? displayFunc(text) : text}
+      </span>
+      {showCursor && <TypeWriterCursor />}
+    </>
   );
 };
 
