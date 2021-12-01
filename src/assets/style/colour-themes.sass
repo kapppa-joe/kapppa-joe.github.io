@@ -43,6 +43,7 @@
 
   .subtitle
     background: $secondary
+    background: linear-gradient(45deg, $secondary,rgba($secondary, 50%))
     color: $foreground
 
   .welcome-msg p
@@ -67,8 +68,7 @@
     color: $foreground
 
   .empty-bar
-    background: rgba($light-grey, 0.7)
-    // filter: drop-shadow(2px 2px 2px $shadow)
+    background: rgba($light-grey, 0.85)
 
   .filled-bar
     background: $primary
@@ -92,6 +92,9 @@
     @for $i from 1 through 6
       & span:nth-child(6n+#{$i})
         background-color: rgba(saturate(adjust-hue($primary, calc(108deg * ($i - 2))), 0.5), 0.5)
+
+  .project-img-wrapper small
+    background: rgba($secondary, 0.5)
 
   a.button
     color: $background
@@ -120,13 +123,13 @@
     .arrow-button
       fill: $primary
       border: 0.5px $light-shadow solid
-      background: rgba($background, 0.5)
-      transition: 0.5s ease
+      background: rgba($background, 0.2)
+      transition: 0.2s ease
       &:hover, &:focus
-        opacity: 0.9
-        background: rgba($primary, 0.3)
-        border: 2px
-        box-shadow: 0 0 3px 5px $primary
+        opacity: 1
+        background: rgba($background, 0.6)
+        outline: 2px $primary solid
+        box-shadow: 0 0 1px 2px $primary
 
 
 #app[data-theme="light"]
