@@ -8,7 +8,7 @@ const EmailIconWrapper = ({
   email: string;
   children: React.ReactNode;
 }) => {
-  const initMsg = "click to copy the email address";
+  const initMsg = "click to copy my email address";
   const doneCopyMsg = "email address copied! 🙂";
   const [isActive, setIsActive] = useState(false);
   const [hasCopied, setHasCopied] = useState(false);

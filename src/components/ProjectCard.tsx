@@ -24,10 +24,10 @@ const ProjectCard = (project: ProjectDataFormat) => {
         </div>
         <div className="link-wrapper">
           <a className="button" href={project.hostedUrl} target="_blank">
-            Demo
+            Live Demo
           </a>
           <a className="button" href={project.repoUrl} target="_blank">
-            Github Repo
+            See the code
           </a>
         </div>
       </div>
