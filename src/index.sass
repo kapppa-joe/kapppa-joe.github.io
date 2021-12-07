@@ -435,6 +435,14 @@ a.button
     opacity: 0.7
     cursor: pointer
     z-index: 2
+    @media screen and (min-width: $lg)
+      background: transparent
+      border: 0
+      height: 90%
+      width: 4em
+      border-radius: 2px
+      top: 5%
+      opacity: 1
 
   .arrow-button-prev
     left: 0.5em
@@ -452,6 +460,7 @@ a.button
     transition: filter 0.3s ease-out
   .slide:not(.selected)
     filter: blur(1px) opacity(0.5) brightness(0.8)
+    pointer-events: none
 
 // Contact
 

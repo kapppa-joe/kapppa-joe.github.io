@@ -1,5 +1,10 @@
 // Colour themes
 
+$sm: 576px
+$md: 768px
+$lg: 992px
+$xl: 1200px
+
 @mixin contact-icons($fg, $bg, $pri)
   & .contact-icons a
     // filter: drop-shadow(0 0 3px rgba($pri, 0.5))
@@ -130,6 +135,12 @@
         background: rgba($background, 0.6)
         outline: 2px $primary solid
         box-shadow: 0 0 1px 2px $primary
+      @media screen and (min-width: $lg)
+        // background: transparent
+        border: 0px
+        &:hover, &:focus
+          box-shadow: none
+          outline: none
 
 
 #app[data-theme="light"]
