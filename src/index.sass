@@ -361,9 +361,10 @@ section#intro .welcome-msg .finished-typing .emoji
   flex-direction: column
   align-items: stretch
   gap: 0.5rem
-  @media screen and (min-width: $lg)
-    display: grid
-    grid-template-columns: 2fr 1fr
+  &:not(.project-landscape-pic)
+    @media screen and (min-width: $lg)
+      display: grid
+      grid-template-columns: 2fr 1fr
 
 .project-text-wrapper
   display: flex
@@ -382,7 +383,8 @@ section#intro .welcome-msg .finished-typing .emoji
   font-weight: 700
 
 .project-techstack-tags
-  display: inline-block
+  display: inline-flex
+  flex-wrap: wrap
 
 .project-techstack-tags span
   margin: 0.2rem
@@ -413,6 +415,9 @@ a.button
     width: 100%
   @media screen and (min-width: $lg)
     order: 1
+    .project-landscape-pic &
+      order: 0
+
 
 .project-swipe-helper
   position: absolute

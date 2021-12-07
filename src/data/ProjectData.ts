@@ -15,6 +15,7 @@ export type ProjectDataFormat = {
   repoUrl: string;
   imgUrl: string;
   demoImgUrl?: string;
+  landscapePic?: boolean;
 };
 
 const ProjectData: Array<ProjectDataFormat> = [
@@ -46,6 +47,7 @@ const ProjectData: Array<ProjectDataFormat> = [
     hostedUrl: "https://sudoku-solver-12345.herokuapp.com/api/",
     repoUrl: "https://github.com/kapppa-joe/python-sudoku-api",
     imgUrl: pythonSudokuApiScreenshot,
+    landscapePic: true,
   },
   {
     title: "Project Euler trial",
@@ -54,6 +56,7 @@ const ProjectData: Array<ProjectDataFormat> = [
     techStack: ["Python", "Pytest"],
     repoUrl: "https://github.com/kapppa-joe/project-euler-trial",
     imgUrl: projectEulerTrialScreenshot,
+    landscapePic: true,
   },
   {
     title: "NC Boardgamers",

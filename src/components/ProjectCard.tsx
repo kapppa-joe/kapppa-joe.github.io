@@ -4,9 +4,14 @@ import { ProjectDataFormat } from "../data/ProjectData";
 
 const ProjectCard = (project: ProjectDataFormat) => {
   return (
-    <article className="project-card">
+    <article
+      className={`project-card ${
+        project.landscapePic && "project-landscape-pic"
+      }`}
+    >
       <div className="project-text-wrapper">
         <h3 className="project-title">{project.title}</h3>
+        {project.landscapePic && <ProjectImage {...project} />}
         <div className="project-description">
           {project.description.split("\n").map((str) => (
             <p>{str}</p>
@@ -23,15 +28,17 @@ const ProjectCard = (project: ProjectDataFormat) => {
           </div>
         </div>
         <div className="link-wrapper">
-          <a className="button" href={project.hostedUrl} target="_blank">
-            Live Demo
-          </a>
+          {project.hostedUrl && (
+            <a className="button" href={project.hostedUrl} target="_blank">
+              Live Demo
+            </a>
+          )}
           <a className="button" href={project.repoUrl} target="_blank">
             See the code
           </a>
         </div>
       </div>
-      <ProjectImage {...project} />
+      {project.landscapePic || <ProjectImage {...project} />}
     </article>
   );
 };
