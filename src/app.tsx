@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useState, useEffect } from "preact/hooks";
 import { BrowserRouter } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Intro from "./sections/Intro";
@@ -11,6 +11,11 @@ import ThemeToggleButton from "./components/ThemeToggleButton";
 export function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const toggleTheme = () => setIsDarkMode((curr) => !curr);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setIsDarkMode(true);
+    }
+  }, []);
 
   return (
     <BrowserRouter>
